@@ -38,4 +38,5 @@ bones = [  ]
 
 [node name="player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 166, 256 )
+_sections_unfolded = [ "collision" ]
 

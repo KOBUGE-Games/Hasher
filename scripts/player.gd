@@ -24,7 +24,7 @@ func _physics_process(delta):
 		vel.y = -GRAVITY*0.35
 	
 	# Handle falling, stop on the floor
-	if(!is_on_floor()):
+	if(!is_on_floor() && !$GroundRay.is_colliding()):
 		vel.y += delta*GRAVITY
 	elif(vel.y > 0):
 		vel.y = 0
