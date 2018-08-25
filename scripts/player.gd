@@ -20,7 +20,7 @@ func _physics_process(delta):
 		vel.x += SPEED
 	
 	# Handle jumping
-	if is_on_floor() && Input.is_action_pressed("jump"):
+	if (is_on_floor() || $GroundRay.is_colliding()) && Input.is_action_pressed("jump"):
 		vel.y = -GRAVITY*0.35
 	
 	# Handle falling, stop on the floor
