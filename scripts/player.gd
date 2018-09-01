@@ -3,7 +3,7 @@ extends KinematicBody2D
 const SPEED = 300				# moving speed
 const GRAVITY = 2000				# falling gravity
 var vel = Vector2(0, 0) # Stores movement for one physics step
-
+var dir = 0
 
 func _ready():
 	set_physics_process(true)
@@ -16,9 +16,15 @@ func _physics_process(delta):
 	vel.x = 0
 	if Input.is_action_pressed("move_left"):
 		vel.x -= SPEED
-	if Input.is_action_pressed("move_right"):
+		if(dir == 0):
+			scale = Vector2(-1, 1)
+			dir = 1
+	elif Input.is_action_pressed("move_right"):
 		vel.x += SPEED
-	
+		if(dir == 1):
+			scale = Vector2(-1, -1)
+			dir = 0
+
 	# Handle jumping
 	if (is_on_floor() || $GroundRay.is_colliding()) && Input.is_action_pressed("jump"):
 		vel.y = -GRAVITY*0.35

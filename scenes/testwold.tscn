@@ -1,11 +1,32 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scenes/player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://gfx/level/floor_tiles.png" type="Texture" id=2]
+
+[sub_resource type="TileSet" id=1]
+
+0/name = "floor_tiles.png 0"
+0/texture = ExtResource( 2 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 64, 128, 64, 64 )
+0/tile_mode = 1
+0/autotile/bitmask_mode = 0
+0/autotile/bitmask_flags = [  ]
+0/autotile/icon_coordinate = Vector2( 0, 0 )
+0/autotile/tile_size = Vector2( 64, 64 )
+0/autotile/spacing = 0
+0/autotile/occluder_map = [  ]
+0/autotile/navpoly_map = [  ]
+0/autotile/priority_map = [  ]
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shapes = [  ]
+0/z_index = 0
 
 [node name="Node2D" type="Node2D"]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-editor/display_folded = true
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
@@ -19,7 +40,26 @@ physics_material_override = null
 build_mode = 0
 polygon = PoolVector2Array( 45, 380, 229, 350, 440.286, 355, 570.286, 357, 642, 360, 889.286, 326, 1059.29, 267, 1222, 217, 1223, 92, 1285.08, 93, 1286.08, 532, 12.4888, 525 )
 
+[node name="Visible2" type="Polygon2D" parent="StaticBody2D"]
+position = Vector2( 0, -3 )
+polygon = PoolVector2Array( 45, 380, 229, 350, 440.286, 355, 570.286, 357, 642, 360, 889.286, 326, 1059.29, 267, 1222, 217, 1223, 92, 1285.08, 93, 1285.29, 529, 43.2864, 394 )
+uv = PoolVector2Array(  )
+splits = PoolIntArray(  )
+color = Color( 0.666667, 0.580392, 0.580392, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation_degrees = 0.0
+skeleton = NodePath("")
+invert_enable = false
+invert_border = 100.0
+bones = [  ]
+
 [node name="Visible" type="Polygon2D" parent="StaticBody2D"]
+position = Vector2( 0, 10 )
 polygon = PoolVector2Array( 45, 380, 229, 350, 440.286, 355, 570.286, 357, 642, 360, 889.286, 326, 1059.29, 267, 1222, 217, 1223, 92, 1285.08, 93, 1286.08, 532, 12.4888, 525 )
 uv = PoolVector2Array(  )
 splits = PoolIntArray(  )
@@ -39,4 +79,24 @@ bones = [  ]
 [node name="player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 166, 256 )
 _sections_unfolded = [ "collision" ]
+
+[node name="TileMap" type="TileMap" parent="."]
+mode = 0
+tile_set = SubResource( 1 )
+cell_size = Vector2( 64, 64 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 1
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray(  )
+_sections_unfolded = [ "tile_set" ]
 
